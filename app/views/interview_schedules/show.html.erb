@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Interviewer:</strong>
+  <%= @interview_schedule.interviewer_id %>
+</p>
+
+<p>
+  <strong>Interviewee:</strong>
+  <%= @interview_schedule.interviewee_id %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @interview_schedule.Start_Time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @interview_schedule.End_Time %>
+</p>
+
+<%= link_to 'Edit', edit_interview_schedule_path(@interview_schedule) %> |
+<%= link_to 'Back', interview_schedules_path %>

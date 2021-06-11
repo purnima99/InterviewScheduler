@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Interview Schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Interviewer</th>
+      <th>Interviewee</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interview_schedules.each do |interview_schedule| %>
+      <tr>
+        <td><%= interview_schedule.interviewer_id %></td>
+        <td><%= interview_schedule.interviewee_id %></td>
+        <td><%= interview_schedule.Start_Time %></td>
+        <td><%= interview_schedule.End_Time %></td>
+        <td><%= link_to 'Show', interview_schedule %></td>
+        <td><%= link_to 'Edit', edit_interview_schedule_path(interview_schedule) %></td>
+        <td><%= link_to 'Destroy', interview_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Interview Schedule', new_interview_schedule_path %>

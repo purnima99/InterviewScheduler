@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interviewer: one
+  interviewee: one
+  Start_Time: 2021-06-11 16:40:16
+  End_Time: 2021-06-11 16:40:16
+
+two:
+  interviewer: two
+  interviewee: two
+  Start_Time: 2021-06-11 16:40:16
+  End_Time: 2021-06-11 16:40:16
