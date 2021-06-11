@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_111016) do
+ActiveRecord::Schema.define(version: 2021_06_11_163618) do
 
   create_table "interview_schedules", force: :cascade do |t|
     t.integer "interviewer_id", null: false
@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2021_06_11_111016) do
     t.datetime "End_Time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "resume"
     t.index ["interviewee_id"], name: "index_interview_schedules_on_interviewee_id"
+    
     t.index ["interviewer_id"], name: "index_interview_schedules_on_interviewer_id"
   end
 
