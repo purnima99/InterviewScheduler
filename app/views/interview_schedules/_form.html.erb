@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :interviewer_id %>
-    <%= form.collection_select(:interviewer_id, Interviewer.all, :id, :name, {:prompt => 'Select the interviewer'}, :selected => @interview_schedule.interviewer_id ) %>
-  </div>
 
-  <div class="field">
-    <%= form.label :interviewee_id %>
-    <%= form.collection_select(:interviewee_id, Interviewee.all, :id, :name, {:prompt => 'Select the interviewee'}, :selected => @interview_schedule.interviewee_id ) %>
+  <div class="field form-group">
+    <% form.label :interviewer_id %>
+    <%= form.collection_select(:interviewer_id, Interviewer.all, :id, :name, {:prompt => 'Select the interviewer'}, :selected => @interview_schedule.interviewer_id, class:"form-control" ) %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="field form-group">
+    <% form.label :interviewee_id %>
+    <%= form.collection_select(:interviewee_id, Interviewee.all, :id, :name, {:prompt => 'Select the interviewee'}, :selected => @interview_schedule.interviewee_id, class:"form-control" ) %>
+  </div>
+  <br>
+  <div class="field form-group">
     <%= form.label :Start_Time %>
     <%= form.datetime_select :Start_Time %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="field form-group">
     <%= form.label :End_Time %>
     <%= form.datetime_select :End_Time %>
   </div>
-
-  <div class="field">
+  <br>
+  <div class="field form-group">
     <%= form.label :resume %>
-    <%= form.file_field :resume %>
+    <%= form.file_field :resume, class:"form-control" %>
   </div>
-  
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-secondary' %>
   </div>
 <% end %>

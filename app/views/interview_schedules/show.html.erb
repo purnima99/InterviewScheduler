@@ -1,24 +1,36 @@
 <p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <h1 class="display-6">Interview Scheduled</h1>
+  <hr class="my-4">
 
-<p>
+  <p>
   <strong>Interviewer:</strong>
   <%= Interviewer.find(@interview_schedule.interviewer_id).name%>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>Interviewee:</strong>
   <%= Interviewee.find(@interview_schedule.interviewee_id).name%>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>Start time:</strong>
   <%= @interview_schedule.Start_Time %>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>End time:</strong>
   <%= @interview_schedule.End_Time %>
-</p>
+  </p>
 
-<%= link_to 'Edit', edit_interview_schedule_path(@interview_schedule) %> |
-<%= link_to 'Back', interview_schedules_path %>
+  <p>
+  <strong>Resume:</strong>
+  <%= @interview_schedule.resume %>
+  </p>
+
+  <br> 
+  <%= link_to 'Edit', edit_interview_schedule_path(@interview_schedule), class:"btn btn-secondary" %>
+  <%= link_to 'Back', interview_schedules_path, class:"btn btn-secondary" %>
+
+  </span>
+</div>

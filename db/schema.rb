@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_06_11_163618) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "resume"
     t.index ["interviewee_id"], name: "index_interview_schedules_on_interviewee_id"
-    
     t.index ["interviewer_id"], name: "index_interview_schedules_on_interviewer_id"
   end
 
