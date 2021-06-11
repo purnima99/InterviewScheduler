@@ -16,8 +16,8 @@
   <tbody>
     <% @interview_schedules.each do |interview_schedule| %>
       <tr>
-        <td><%= interview_schedule.interviewer_id %></td>
-        <td><%= interview_schedule.interviewee_id %></td>
+        <td><%= Interviewer.find(interview_schedule.interviewer_id).name %></td>
+        <td><%= Interviewee.find(interview_schedule.interviewee_id).name %></td>
         <td><%= interview_schedule.Start_Time %></td>
         <td><%= interview_schedule.End_Time %></td>
         <td><%= link_to 'Show', interview_schedule %></td>

@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :interviewer_id %>
-    <%= form.text_field :interviewer_id %>
+    <%= form.collection_select(:interviewer_id, Interviewer.all, :id, :name, {:prompt => 'Select the interviewer'}, :selected => @interview_schedule.interviewer_id ) %>
   </div>
 
   <div class="field">
     <%= form.label :interviewee_id %>
-    <%= form.text_field :interviewee_id %>
+    <%= form.collection_select(:interviewee_id, Interviewee.all, :id, :name, {:prompt => 'Select the interviewee'}, :selected => @interview_schedule.interviewee_id ) %>
   </div>
 
   <div class="field">

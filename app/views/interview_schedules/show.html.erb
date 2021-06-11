@@ -2,12 +2,12 @@
 
 <p>
   <strong>Interviewer:</strong>
-  <%= @interview_schedule.interviewer_id %>
+  <%= Interviewer.find(@interview_schedule.interviewer_id).name%>
 </p>
 
 <p>
   <strong>Interviewee:</strong>
-  <%= @interview_schedule.interviewee_id %>
+  <%= Interviewee.find(@interview_schedule.interviewee_id).name%>
 </p>
 
 <p>
