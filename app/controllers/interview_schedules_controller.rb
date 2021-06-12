@@ -33,13 +33,13 @@ class InterviewSchedulesController < ApplicationController
                                   interview_schedule_params['end_time(3i)'].to_i,
                                   interview_schedule_params['end_time(4i)'].to_i,
                                   interview_schedule_params['end_time(5i)'].to_i)                            
-      
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_end_time,passed_end_time).present?
+
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (? <= interview_schedules.start_time AND ? >= interview_schedules.end_time))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_time,passed_end_time).present?
       
       # check if user already has a interview or not
       if doesInterviewExist
         @interview_schedule = InterviewSchedule.new()
-        @interview_schedule.errors[:base] << "Either Interviewer or interviewee is busy"
+        @interview_schedule.errors[:base] << "Interviewer and/or Interviewee is busy"
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @interview_schedule.errors, status: :unprocessable_entity }
 
@@ -83,12 +83,12 @@ class InterviewSchedulesController < ApplicationController
                                   interview_schedule_params['end_time(4i)'].to_i,
                                   interview_schedule_params['end_time(5i)'].to_i) 
 
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?))",
-                                                    interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id],params[:id], passed_time,passed_time,passed_end_time,passed_end_time).present?
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (? <= interview_schedules.start_time AND ? >= interview_schedules.end_time))",
+                                                    interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id],params[:id], passed_time,passed_time,passed_time,passed_end_time).present?
 
       # check if user already have a interview or not
       if doesInterviewExist
-        @interview_schedule.errors[:base] << "This Person is busy"
+        @interview_schedule.errors[:base] << "Interviewer and/or Interviewee is busy"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @interview_schedule.errors, status: :unprocessable_entity }
 
