@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_222846) do
+ActiveRecord::Schema.define(version: 2021_06_12_091929) do
 
   create_table "interview_schedules", force: :cascade do |t|
     t.integer "interviewer_id", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_222846) do
   create_table "interviewees", force: :cascade do |t|
     t.string "name"
     t.string "email_id"
-    t.integer "phone"
+    t.integer "phone", limit: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_222846) do
   create_table "interviewers", force: :cascade do |t|
     t.string "name"
     t.string "email_id"
-    t.integer "phone"
+    t.integer "phone", limit: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
