@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Interviewer Scheduler 
 
-Things you may want to cover:
+Once you've cloned the repo or dowloaded & unziped it, in the project directory run the below commands to run the Interview Scheduler -
 
-* Ruby version
+* 1. npm install
 
-* System dependencies
+* 2. bundle install
 
-* Configuration
+* 3. rake db:migrate
 
-* Database creation
+* 4. rake db:seed
 
-* Database initialization
+* 5. rails s
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
