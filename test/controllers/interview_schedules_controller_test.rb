@@ -17,7 +17,7 @@ class InterviewSchedulesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create interview_schedule" do
     assert_difference('InterviewSchedule.count') do
-      post interview_schedules_url, params: { interview_schedule: { End_Time: @interview_schedule.End_Time, Start_Time: @interview_schedule.Start_Time, interviewee_id: @interview_schedule.interviewee_id, interviewer_id: @interview_schedule.interviewer_id } }
+      post interview_schedules_url, params: { interview_schedule: { end_time: @interview_schedule.end_time, start_time: @interview_schedule.start_time, interviewee_id: @interview_schedule.interviewee_id, interviewer_id: @interview_schedule.interviewer_id } }
     end
 
     assert_redirected_to interview_schedule_url(InterviewSchedule.last)
@@ -34,7 +34,7 @@ class InterviewSchedulesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update interview_schedule" do
-    patch interview_schedule_url(@interview_schedule), params: { interview_schedule: { End_Time: @interview_schedule.End_Time, Start_Time: @interview_schedule.Start_Time, interviewee_id: @interview_schedule.interviewee_id, interviewer_id: @interview_schedule.interviewer_id } }
+    patch interview_schedule_url(@interview_schedule), params: { interview_schedule: { end_time: @interview_schedule.end_time, start_time: @interview_schedule.start_time, interviewee_id: @interview_schedule.interviewee_id, interviewer_id: @interview_schedule.interviewer_id } }
     assert_redirected_to interview_schedule_url(@interview_schedule)
   end
 

@@ -19,5 +19,5 @@
 #   ])
 
 InterviewSchedule.create([
-    {interviewer_id: "2", interviewee_id: "2", Start_Time:"2021-06-12 13:20:00", End_Time:"2021-06-12 14:20:00", resume:"Resume_PurnimaLal.pdf"}
+    {interviewer_id: "2", interviewee_id: "2", start_time:"2021-06-12 13:20:00", end_time:"2021-06-12 14:20:00", resume:"Resume_PurnimaLal.pdf"}
 ])

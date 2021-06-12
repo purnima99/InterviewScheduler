@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_091929) do
+ActiveRecord::Schema.define(version: 2021_06_12_105152) do
 
   create_table "interview_schedules", force: :cascade do |t|
     t.integer "interviewer_id", null: false
     t.integer "interviewee_id", null: false
-    t.datetime "Start_Time"
-    t.datetime "End_Time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "resume"

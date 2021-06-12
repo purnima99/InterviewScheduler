@@ -30,8 +30,8 @@
           <td><%= Interviewee.find(interview_schedule.interviewee_id).name %></td>
           <td><%= Interviewee.find(interview_schedule.interviewee_id).email_id %></td>
           <td><%= Interviewee.find(interview_schedule.interviewee_id).phone %></td>
-          <td><%= interview_schedule.Start_Time %></td>
-          <td><%= interview_schedule.End_Time %></td>
+          <td><%= interview_schedule.start_time %></td>
+          <td><%= interview_schedule.end_time %></td>
           <td><%= interview_schedule.resume %></td>
           <td><%= link_to 'Show', interview_schedule %></td>
           <td><%= link_to 'Edit', edit_interview_schedule_path(interview_schedule) %></td>

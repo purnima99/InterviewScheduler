@@ -22,19 +22,19 @@ class InterviewSchedulesController < ApplicationController
   # POST /interview_schedules or /interview_schedules.json
   def create
     respond_to do |format|
-      passed_time = DateTime.new(interview_schedule_params['Start_Time(1i)'].to_i,
-                                  interview_schedule_params['Start_Time(2i)'].to_i,
-                                  interview_schedule_params['Start_Time(3i)'].to_i,
-                                  interview_schedule_params['Start_Time(4i)'].to_i,
-                                  interview_schedule_params['Start_Time(5i)'].to_i)
+      passed_time = DateTime.new(interview_schedule_params['start_time(1i)'].to_i,
+                                  interview_schedule_params['start_time(2i)'].to_i,
+                                  interview_schedule_params['start_time(3i)'].to_i,
+                                  interview_schedule_params['start_time(4i)'].to_i,
+                                  interview_schedule_params['start_time(5i)'].to_i)
 
-      passed_end_time = DateTime.new(interview_schedule_params['End_Time(1i)'].to_i,
-                                  interview_schedule_params['End_Time(2i)'].to_i,
-                                  interview_schedule_params['End_Time(3i)'].to_i,
-                                  interview_schedule_params['End_Time(4i)'].to_i,
-                                  interview_schedule_params['End_Time(5i)'].to_i)                            
+      passed_end_time = DateTime.new(interview_schedule_params['end_time(1i)'].to_i,
+                                  interview_schedule_params['end_time(2i)'].to_i,
+                                  interview_schedule_params['end_time(3i)'].to_i,
+                                  interview_schedule_params['end_time(4i)'].to_i,
+                                  interview_schedule_params['end_time(5i)'].to_i)                            
       
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?) OR (interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_end_time,passed_end_time).present?
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_end_time,passed_end_time).present?
       
       # check if user already has a interview or not
       if doesInterviewExist
@@ -72,18 +72,18 @@ class InterviewSchedulesController < ApplicationController
   # PATCH/PUT /interview_schedules/1 or /interview_schedules/1.json
   def update
     respond_to do |format|
-      passed_time = DateTime.new(interview_schedule_params['Start_Time(1i)'].to_i,
-                                  interview_schedule_params['Start_Time(2i)'].to_i,
-                                  interview_schedule_params['Start_Time(3i)'].to_i,
-                                  interview_schedule_params['Start_Time(4i)'].to_i,
-                                  interview_schedule_params['Start_Time(5i)'].to_i)
-      passed_end_time = DateTime.new(interview_schedule_params['End_Time(1i)'].to_i,
-                                  interview_schedule_params['End_Time(2i)'].to_i,
-                                  interview_schedule_params['End_Time(3i)'].to_i,
-                                  interview_schedule_params['End_Time(4i)'].to_i,
-                                  interview_schedule_params['End_Time(5i)'].to_i) 
+      passed_time = DateTime.new(interview_schedule_params['start_time(1i)'].to_i,
+                                  interview_schedule_params['start_time(2i)'].to_i,
+                                  interview_schedule_params['start_time(3i)'].to_i,
+                                  interview_schedule_params['start_time(4i)'].to_i,
+                                  interview_schedule_params['start_time(5i)'].to_i)
+      passed_end_time = DateTime.new(interview_schedule_params['end_time(1i)'].to_i,
+                                  interview_schedule_params['end_time(2i)'].to_i,
+                                  interview_schedule_params['end_time(3i)'].to_i,
+                                  interview_schedule_params['end_time(4i)'].to_i,
+                                  interview_schedule_params['end_time(5i)'].to_i) 
 
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?) OR (interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?))",
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?))",
                                                     interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id],params[:id], passed_time,passed_time,passed_end_time,passed_end_time).present?
 
       # check if user already have a interview or not
@@ -133,6 +133,6 @@ class InterviewSchedulesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interview_schedule_params
-      params.require(:interview_schedule).permit(:interviewer_id, :interviewee_id, :Start_Time, :End_Time, :resume)
+      params.require(:interview_schedule).permit(:interviewer_id, :interviewee_id, :start_time, :end_time, :resume)
     end
 end

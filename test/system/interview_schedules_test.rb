@@ -14,8 +14,8 @@ class InterviewSchedulesTest < ApplicationSystemTestCase
     visit interview_schedules_url
     click_on "New Interview Schedule"
 
-    fill_in "End time", with: @interview_schedule.End_Time
-    fill_in "Start time", with: @interview_schedule.Start_Time
+    fill_in "End time", with: @interview_schedule.end_time
+    fill_in "Start time", with: @interview_schedule.start_time
     fill_in "Interviewee", with: @interview_schedule.interviewee_id
     fill_in "Interviewer", with: @interview_schedule.interviewer_id
     click_on "Create Interview schedule"
@@ -28,8 +28,8 @@ class InterviewSchedulesTest < ApplicationSystemTestCase
     visit interview_schedules_url
     click_on "Edit", match: :first
 
-    fill_in "End time", with: @interview_schedule.End_Time
-    fill_in "Start time", with: @interview_schedule.Start_Time
+    fill_in "End time", with: @interview_schedule.end_time
+    fill_in "Start time", with: @interview_schedule.start_time
     fill_in "Interviewee", with: @interview_schedule.interviewee_id
     fill_in "Interviewer", with: @interview_schedule.interviewer_id
     click_on "Update Interview schedule"

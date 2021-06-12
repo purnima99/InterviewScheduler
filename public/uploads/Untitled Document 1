@@ -1,8 +1,8 @@
 class AddUniquenessConstraintTointerviewSchedules < ActiveRecord::Migration[6.1]
   def change
     change_table :interview_schedules do |t|
-     t.index ['Interviewer_Name', 'Start_Time'], name: 'no_clashes_allowed', unique: true
-     t.index ['Interviewer_Name', 'End_Time'], name: 'no_clashes_allowed', unique: true
+     t.index ['Interviewer_Name', 'start_time'], name: 'no_clashes_allowed', unique: true
+     t.index ['Interviewer_Name', 'end_time'], name: 'no_clashes_allowed', unique: true
         
   end
 end
