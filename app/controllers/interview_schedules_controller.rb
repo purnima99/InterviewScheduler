@@ -46,9 +46,9 @@ class InterviewSchedulesController < ApplicationController
       else
         # upload image
         uploaded_io = interview_schedule_params[:resume]
-        File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-          file.write(uploaded_io.read)
-        end
+        #File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        #  file.write(uploaded_io.read)
+        #end
         new_params = interview_schedule_params.clone 
         new_params[:resume] = uploaded_io.original_filename
         # upload image
