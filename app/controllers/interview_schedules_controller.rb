@@ -34,7 +34,7 @@ class InterviewSchedulesController < ApplicationController
                                   interview_schedule_params['End_Time(4i)'].to_i,
                                   interview_schedule_params['End_Time(5i)'].to_i)                            
       
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((Start_Time <= ? AND End_Time >= ?) OR (Start_Time <= ? AND End_Time >= ?))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_end_time,passed_end_time).present?
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?) OR (interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_end_time,passed_end_time).present?
       
       # check if user already has a interview or not
       if doesInterviewExist
@@ -46,9 +46,9 @@ class InterviewSchedulesController < ApplicationController
       else
         # upload image
         uploaded_io = interview_schedule_params[:resume]
-        #File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-        #  file.write(uploaded_io.read)
-        #end
+        File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+          file.write(uploaded_io.read)
+        end
         new_params = interview_schedule_params.clone 
         new_params[:resume] = uploaded_io.original_filename
         # upload image
@@ -83,7 +83,7 @@ class InterviewSchedulesController < ApplicationController
                                   interview_schedule_params['End_Time(4i)'].to_i,
                                   interview_schedule_params['End_Time(5i)'].to_i) 
 
-      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((Start_Time <= ? AND End_Time >= ?) OR (Start_Time <= ? AND End_Time >= ?))",
+      doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?) AND id !=? AND ((interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?) OR (interview_schedules.Start_Time <= ? AND interview_schedules.End_Time >= ?))",
                                                     interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id],params[:id], passed_time,passed_time,passed_end_time,passed_end_time).present?
 
       # check if user already have a interview or not
