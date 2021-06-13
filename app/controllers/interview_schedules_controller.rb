@@ -1,5 +1,5 @@
 class InterviewSchedulesController < ApplicationController
-  before_action :set_interview_schedule, only: %i[ show edit update destroy ]
+  before_action :set_interview_schedule, only: %i[ edit update destroy ]
 
   # GET /interview_schedules or /interview_schedules.json
   def index
@@ -8,6 +8,14 @@ class InterviewSchedulesController < ApplicationController
 
   # GET /interview_schedules/1 or /interview_schedules/1.json
   def show
+    # puts "checkpoint1"
+    # email = params[:id] +"."+ params[:format]
+    # vr = Interviewee.where("email_id=?",email)
+    # puts vr
+    # puts "checkpint2"
+    @interview_schedule = InterviewSchedule.find(params[:id])
+
+    #params.require(:interview_schedule).permit(:interviewer_id, :interviewee_id, :start_time, :end_time, :resume)
   end
 
   # GET /interview_schedules/new
@@ -36,8 +44,11 @@ class InterviewSchedulesController < ApplicationController
 
       doesInterviewExist = InterviewSchedule.where("(interviewer_id = ? OR interviewee_id= ?)  AND ((interview_schedules.start_time <= ? AND interview_schedules.end_time >= ?) OR (? <= interview_schedules.start_time AND ? >= interview_schedules.end_time))",interview_schedule_params[:interviewer_id], interview_schedule_params[:interviewee_id], passed_time,passed_time,passed_time,passed_end_time).present?
       
+      #current_time = DateTime.now()
+
+        
       # check if user already has a interview or not
-      if doesInterviewExist
+      if doesInterviewExist || passed_time < DateTime.now() || passed_end_time < DateTime.now()
         @interview_schedule = InterviewSchedule.new()
         @interview_schedule.errors[:base] << "Interviewer and/or Interviewee is busy"
         format.html { render :new, status: :unprocessable_entity }
