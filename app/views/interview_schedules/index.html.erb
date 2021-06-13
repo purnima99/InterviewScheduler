@@ -35,7 +35,7 @@
           <td><a href=<%="uploads/"+interview_schedule.resume%>> <%= interview_schedule.resume %></a></td>
           
           
-          <td><%= link_to 'Show', interview_schedule_path(:id=>interview_schedule,:email=>Interviewee.find(interview_schedule.interviewee_id).email_id) %></td>
+          <td><a href=<%= "interview_schedule/"+interview_schedule.id.to_s+"/"+Interviewee.find(interview_schedule.interviewee_id).email_id %>> show</a></td>
           <td><%= link_to 'Edit', edit_interview_schedule_path(interview_schedule) %></td>
           <td><%= link_to 'Destroy', interview_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
